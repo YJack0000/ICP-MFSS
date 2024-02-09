@@ -29,8 +29,8 @@
       </div>
     </nav>
     <div class="container mt-5">
-            <div class="alert alert-danger" role="alert"> 
-        在期中考期間，請勿以教室以外的電腦上傳檔案或使用同學學號上傳，如發現異常
+      <div class="alert alert-danger" role="alert">
+        在期末考期間，請勿以教室以外的電腦上傳檔案或使用同學學號上傳，如發現異常
         IP 位置一率零分計算。
       </div>
       <form
@@ -47,6 +47,8 @@
           <label for="submission" class="form-label">Submission</label>
           <select class="form-select" aria-label="submission" name="submission">
             <option value="lab12-2">lab12-2</option>
+            <option value="hw8-1">hw8-1</option>
+            <option value="final-makefile">Final exam - Makefile</option>
           </select>
         </div>
         <div class="mb-3">
@@ -55,6 +57,9 @@
         </div>
         <button type="submit" class="btn btn-primary" id="loading">
           Upload
+        </button>
+        <button type="button" class="btn btn-primary" hx-post="/verify">
+          Verify Uploaded Files
         </button>
         <div
           class="spinner-grow text-primary"

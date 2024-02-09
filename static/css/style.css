@@ -1,0 +1,7 @@
+.htmx-request {
+  display: block !important;
+}
+
+.btn.htmx-request {
+    display: none !important;
+}
