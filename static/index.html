@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>File Upload</title>
+    <!-- favicon -->
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">2023 ICP File Uploader</span>
+      </div>
+    </nav>
+    <div class="container mt-5">
+            <div class="alert alert-danger" role="alert"> 
+        在期中考期間，請勿以教室以外的電腦上傳檔案或使用同學學號上傳，如發現異常
+        IP 位置一率零分計算。
+      </div>
+      <form
+        hx-post="/upload"
+        hx-target="#upload-results"
+        hx-encoding="multipart/form-data"
+        hx-indicator="#loading"
+      >
+        <div class="mb-3">
+          <label for="student_id" class="form-label">Student ID</label>
+          <input type="text" class="form-control" name="student_id" />
+        </div>
+        <div class="mb-3">
+          <label for="submission" class="form-label">Submission</label>
+          <select class="form-select" aria-label="submission" name="submission">
+            <option value="lab12-2">lab12-2</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="files" class="form-label">Files</label>
+          <input type="file" class="form-control" name="files" multiple />
+        </div>
+        <button type="submit" class="btn btn-primary" id="loading">
+          Upload
+        </button>
+        <div
+          class="spinner-grow text-primary"
+          role="status"
+          id="loading"
+          style="display: none"
+        >
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </form>
+      <!-- <div id="loading" style="display: none"> -->
+      <!--   <div class="spinner-grow text-primary" role="status"> -->
+      <!--     <span class="visually-hidden">Loading...</span> -->
+      <!--   </div> -->
+      <!-- </div> -->
+      <div id="upload-results"></div>
+    </div>
+  </body>
+</html>
